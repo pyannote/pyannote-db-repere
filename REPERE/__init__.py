@@ -121,6 +121,17 @@ class Phase2(REPERESpeakerDiarizationProtocol):
     def tst_iter(self):
         return self._subset('phase2', 'tst')
 
+class All(REPERESpeakerDiarizationProtocol):
+    """All REPERE data
+
+    * Phase1 test
+    * Phase2 train
+    * Phase2 development
+    * Phase2 test
+    """
+
+    def trn_iter(self):
+        return self._subset('all', 'trn')
 
 class REPERE(Database):
     """REPERE corpus
@@ -148,3 +159,6 @@ Website
 
         self.register_protocol(
             'SpeakerDiarization', 'Phase2', Phase2)
+
+        self.register_protocol(
+            'SpeakerDiarization', 'All', All)
